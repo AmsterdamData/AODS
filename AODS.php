@@ -37,5 +37,11 @@ class AODS{
         $fname = substr($filelocation, strrpos($filelocation, "/") + 1);
         $this->sftp->put($fname, $contents);
     }
+    
+    function getFiletime($filepath){
+        $this->connect();
+        $stats = $this->sftp->stat($filepath); 
+        return $stats["mtime"];
+    }
 }
 ?>
