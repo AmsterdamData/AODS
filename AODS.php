@@ -14,12 +14,9 @@ class AODS{
     }
     
     function connect(){
+        error_reporting(E_ALL);
         if(!$this->sftp){
-            $domain = $this->settings->sftp->domain;
-            $user = $this->settings->sftp->username; 
-            $password = $this->settings->sftp->password;
-    
-            $this->sftp = new Net_SFTP(SFTP_DOMAIN, 22, 30);
+            $this->sftp = new Net_SFTP(SFTP_DOMAIN);
             if(!$this->sftp->login(SFTP_USERNAME, SFTP_PASSWORD)) {
                 exit('Login Failed');
             }
